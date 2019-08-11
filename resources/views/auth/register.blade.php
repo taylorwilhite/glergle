@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-center">
-        <div class="w-4/5 md:w-2/3 lg:w-1/3 bg-grey-dark text-white my-10 rounded">
+        <div class="w-4/5 md:w-2/3 lg:w-1/3 bg-grey-light text-white my-10 rounded">
             <div class="px-4 py-10">
                 <div class="text-lg pb-6">{{ __('Register') }}</div>
 
@@ -32,6 +32,20 @@
                                 <input id="email" type="email" class="rounded-full pl-2 text-grey-dark @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="pb-6">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="rounded-full pl-2 text-grey-dark @error('username') is-invalid @enderror" name="username" required autocomplete="username">
+
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
