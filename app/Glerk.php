@@ -8,4 +8,8 @@ class Glerk extends Model
 {
     //
     public $fillable = ['content'];
+
+    public function owner() {
+        return $this->belongsTo(User::class);
+    }
 }
