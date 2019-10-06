@@ -13,6 +13,7 @@ class ManageGlerkTest extends TestCase
     public function a_user_can_create_glerks() {
         $this->withoutExceptionHandling();
 
+        $this->signIn();
         $newGlerk = ['content' => 'test glerk'];
 
         $this->post('/glerks', $newGlerk);
