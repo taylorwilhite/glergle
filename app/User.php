@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function glerks() {
-        return $this-hasMany(Glerk::class, 'owner_id');
+        return $this->hasMany(Glerk::class, 'owner_id');
     }
 }

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class GlerkController extends Controller
 {
+    public function index() {
+        $glerks = auth()->user()->glerks;
+        return response($glerks, 200);
+    }
     //
     public function store(Request $request) {
         $glerk = [

@@ -3,6 +3,14 @@
     @section('content')
                     @auth
                         <div id="home"></div>
+                        <form method="POST" action="/glerks">
+                            @csrf
+                            <input type="text" name="content">
+                            <button type="submit">Submit</button>
+                        </form>
+                        @foreach ($glerks as $glerk)
+                            <p>{{$glerk->content}}</p>
+                        @endforeach
                     @else
                         <div class="w-full max-h-full flex justify-between">
                             <div class="hidden md:block w-1/2 h-full px-10 py-10">

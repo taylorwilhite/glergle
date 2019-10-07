@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $glerks = auth()->user()->glerks;
+    return view('welcome', compact('glerks'));
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/glerks', 'GlerkController@index');
 Route::post('/glerks', 'GlerkController@store');
