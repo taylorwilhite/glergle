@@ -9,7 +9,7 @@ class GlerkController extends Controller
 {
     public function index() {
         $glerks = auth()->user()->glerks;
-        return response($glerks, 200);
+        return response()->json($glerks);
     }
     //
     public function store(Request $request) {

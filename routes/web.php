@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    $glerks = auth()->user()->glerks;
-    return view('welcome', compact('glerks'));
+    return view('welcome');
 });
 
 Auth::routes();
