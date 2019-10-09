@@ -17,6 +17,9 @@ class CreateGlerksTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('content');
+            $table->unsignedInteger('owner_id');
+
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

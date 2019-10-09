@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Glerks } from './Glerks';
 
 export default class Home extends Component {
     render() {
@@ -8,7 +9,9 @@ export default class Home extends Component {
                 <div className="w-1/3 mx-auto mt-10">
                     <div className="bg-grey-dark text-red w-full p-10">home componenet</div>
 
-                    <div className="bg-red text-grey-dark p-10">I am the god of hellfire</div>
+                    <div className="bg-red text-grey-dark p-10">
+                        <Glerks />
+                    </div>
                 </div>
             </div>
         );
@@ -16,5 +19,7 @@ export default class Home extends Component {
 }
 
 if (document.getElementById('home')) {
-    ReactDOM.render(<Home />, document.getElementById('home'));
+    const element = document.getElementById('home');;
+    const props = Object.assign({}, element.dataset);
+    ReactDOM.render(<Home {...props} />, element);
 }

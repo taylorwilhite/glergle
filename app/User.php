@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function glerks() {
+        return $this->hasMany(Glerk::class, 'owner_id');
+    }
 }
