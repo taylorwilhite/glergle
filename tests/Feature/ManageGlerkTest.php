@@ -13,11 +13,23 @@ class ManageGlerkTest extends TestCase
     public function a_user_can_create_glerks() {
         $this->withoutExceptionHandling();
 
-        $this->signIn();
+        $user = factory('App\User')->create();
         $newGlerk = ['content' => 'test glerk'];
 
-        $this->post('/glerks', $newGlerk);
+        $this->actingAs($user, 'api')->post('v1/glerks', $newGlerk);
 
         $this->assertDatabaseHas('glerks', $newGlerk);
+    }
+    /** @test */
+    public function a_user_can_retrieve_glerks() {
+        $this->withoutExceptionHandling();
+        $glerk = factory('App\Glerk')->create();
+
+        $this->actingAs($glerk->owner, 'api')
+            ->get('v1/glerks')
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                'content' => $glerk->content,
+            ]);
     }
 }
